@@ -33,8 +33,8 @@ const Task = ({ data, UpdateTaskHandler, DeleteTaskHandler, index }) => {
   };
 
   return (
-    <div class="card task-card">
-      <div class="card-header task-header">
+    <div className="card task-card">
+      <div className="card-header task-header">
         <h5 className="task-header-title">
           #{index + 1} {data.title}
         </h5>
@@ -46,9 +46,9 @@ const Task = ({ data, UpdateTaskHandler, DeleteTaskHandler, index }) => {
         </h6>
       </div>
 
-      <div class="card-body task-body">
+      <div className="card-body task-body">
         <div>
-          <p class="card-text">{data.description}</p>
+          <p className="card-text">{data.description}</p>
         </div>
         <div className="task-btns">
           <button
@@ -76,7 +76,7 @@ const Task = ({ data, UpdateTaskHandler, DeleteTaskHandler, index }) => {
           <div className="heading">Update task</div>
           <form>
             <select
-              class="form-select form-select-lg mb-3"
+              className="form-select form-select-lg mb-3"
               aria-label=".form-select-lg example"
               value={status}
               onChange={(e) => setStatus(e.target.value)}
@@ -88,7 +88,7 @@ const Task = ({ data, UpdateTaskHandler, DeleteTaskHandler, index }) => {
             <div className="modal-btns">
               <button
                 type="button"
-                class="btn btn-primary"
+                className="btn btn-primary"
                 onClick={() => setOpenModal(false)}
               >
                 close
