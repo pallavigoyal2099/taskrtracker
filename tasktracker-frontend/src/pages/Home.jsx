@@ -9,7 +9,6 @@ import {
 import { toast } from "react-toastify";
 import Loader from "../components/Loader";
 import { Link } from "react-router-dom";
-import { Field } from "formik";
 
 const Home = () => {
   const { data, isLoading, isError, refetch } = useGetAllTaskQuery();
@@ -18,9 +17,8 @@ const Home = () => {
   const [deleteTask, _deleteTaskResponse] = useDeleteTaskMutation();
 
   const UpdateTaskHandler = async (id, status) => {
-    console.log(id, status);
     try {
-      const { data, error } = await updateTask(id, status);
+      const { data, error } = await updateTask({ id, status });
 
       // console.log({data,error});
       if (error) {
@@ -39,7 +37,6 @@ const Home = () => {
     try {
       const { data, error } = await deleteTask(id);
 
-      // console.log({data,error});
       if (error) {
         toast.error(error.data?.msg);
         return;
@@ -70,7 +67,7 @@ const Home = () => {
     return <Loader />;
   }
   if (isError) {
-    return <div>error</div>;
+    return <div className="error">An error occured!</div>;
   }
 
   return (
@@ -86,7 +83,7 @@ const Home = () => {
         <label className="form-label">Task Status Filter</label>
         <select
           onChange={(e) => setStatus(e.target.value)}
-          class="form-select"
+          className="form-select"
           name="status"
           component="select"
         >
@@ -97,7 +94,7 @@ const Home = () => {
         </select>
       </div>
       <div className="container">
-        <div class="row">
+        <div className="row">
           {filteredTasks.length > 0 ? (
             filteredTasks.map((cur, i) => {
               return (
@@ -113,7 +110,7 @@ const Home = () => {
           ) : (
             <>
               <tr>
-                <td colSpan={4}>Not Task Have</td>
+                <td colSpan={4}>No tasks found!</td>
               </tr>
             </>
           )}

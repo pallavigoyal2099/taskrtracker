@@ -72,7 +72,7 @@ const AddTask = () => {
             <button
               type="submit"
               disabled={responseAddTask.isLoading}
-              className="btn btn-danger"
+              className="btn btn-primary"
             >
               {responseAddTask.isLoading ? "Submit..." : "Submit"}
             </button>

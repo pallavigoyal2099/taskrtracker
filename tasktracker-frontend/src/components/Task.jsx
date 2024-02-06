@@ -10,13 +10,13 @@ const customStyles = {
     right: "auto",
     bottom: "auto",
     height: "13rem",
+    width: "30%",
     marginRight: "-50%",
     transform: "translate(-50%, -50%)",
   },
 };
 // Modal.setAppElement("#yourAppElement");
 const Task = ({ data, UpdateTaskHandler, DeleteTaskHandler, index }) => {
-  let subtitle;
   const [openModal, setOpenModal] = useState(false);
   const [status, setStatus] = useState(data.status);
   const getStatusColor = (status) => {
@@ -60,7 +60,7 @@ const Task = ({ data, UpdateTaskHandler, DeleteTaskHandler, index }) => {
           <button
             onClick={() => setOpenModal(true)}
             className="btn btn-warning btn-sm update-btn"
-            disabled={data.status === "Done"}
+            // disabled={data.status !== "Done"}
           >
             Update
           </button>
@@ -94,7 +94,10 @@ const Task = ({ data, UpdateTaskHandler, DeleteTaskHandler, index }) => {
                 close
               </button>
               <button
-                onClick={() => UpdateTaskHandler(data._id, status)}
+                onClick={() => {
+                  UpdateTaskHandler(data._id, status);
+                  setOpenModal(false);
+                }}
                 type="submit"
                 className="btn btn-danger"
               >
