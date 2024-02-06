@@ -18,6 +18,7 @@ const Home = () => {
   const [deleteTask, _deleteTaskResponse] = useDeleteTaskMutation();
 
   const UpdateTaskHandler = async (id, status) => {
+    console.log(id, status);
     try {
       const { data, error } = await updateTask(id, status);
 
@@ -95,7 +96,7 @@ const Home = () => {
           <option value="Done">Done</option>
         </select>
       </div>
-      <div class="container">
+      <div className="container">
         <div class="row">
           {filteredTasks.length > 0 ? (
             filteredTasks.map((cur, i) => {
